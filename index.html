@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#07152f">
+<title>یه تبریک کوچولو ✨</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; min-height: 100%; }
+  body {
+    min-height: 100svh; overflow: hidden; display: grid; place-items: center;
+    font-family: Tahoma, "Arial", sans-serif; color: #fff8ff;
+    background:
+      radial-gradient(ellipse at 50% 15%, rgba(47,94,174,.42), transparent 42%),
+      radial-gradient(ellipse at 15% 85%, rgba(68,39,133,.32), transparent 36%),
+      linear-gradient(155deg, #102b58 0%, #081a39 48%, #030b1d 100%);
+  }
+  .sky { position: fixed; inset: 0; overflow: hidden; pointer-events: none; }
+  .star {
+    position: absolute; color: #dceaff; opacity: .8;
+    text-shadow: 0 0 9px #8db9ff, 0 0 18px #548dff;
+    animation: twinkle var(--duration, 3s) ease-in-out infinite alternate;
+    user-select: none;
+  }
+  @keyframes twinkle { from { opacity: .28; transform: scale(.78) rotate(0deg); } to { opacity: 1; transform: scale(1.18) rotate(18deg); } }
+  .shooting {
+    position: absolute; width: 110px; height: 2px; border-radius: 99px;
+    background: linear-gradient(90deg, transparent, #d6e8ff, transparent);
+    transform: rotate(-32deg); opacity: 0; animation: shoot 7s linear infinite;
+  }
+  @keyframes shoot {
+    0%, 72% { opacity: 0; transform: translate(0,0) rotate(-32deg); }
+    74% { opacity: .9; }
+    88% { opacity: 0; transform: translate(-240px,130px) rotate(-32deg); }
+    100% { opacity: 0; }
+  }
+  main { position: relative; z-index: 1; width: min(92vw, 620px); padding: 28px 22px; text-align: center; }
+  .moon {
+    width: 78px; height: 78px; margin: 0 auto 24px; border-radius: 50%;
+    background: #fff2c6; box-shadow: 0 0 24px #ffe7a477, 0 0 75px #91baff55;
+    position: relative; animation: float 4s ease-in-out infinite;
+  }
+  .moon::after { content: ""; position: absolute; width: 70px; height: 70px; left: -12px; top: -8px; border-radius: 50%; background: #10234a; }
+  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+  .eyebrow { color: #b9d6ff; letter-spacing: 2px; font-size: 12px; margin-bottom: 16px; }
+  h1 { margin: 0 auto; font-size: clamp(28px, 7.2vw, 46px); line-height: 1.9; font-weight: 800; text-shadow: 0 0 22px #8abaff66; }
+  h1 .glow { color: #ffe6a8; text-shadow: 0 0 12px #ffd97788, 0 0 30px #9cc8ff77; }
+  .divider { display: flex; align-items: center; justify-content: center; gap: 12px; color: #a9caff; margin: 24px 0 18px; }
+  .divider::before, .divider::after { content: ""; height: 1px; width: 54px; background: linear-gradient(90deg, transparent, #8cb8ff99); }
+  .divider::after { transform: rotate(180deg); }
+  .tiny { color: #b9c9e8; font-size: 14px; line-height: 2; margin: 0; }
+  .sparkle { display: inline-block; color: #ffe6a8; animation: twinkle 2s ease-in-out infinite alternate; }
+  .hearts { margin-top: 25px; font-size: 20px; letter-spacing: 9px; filter: drop-shadow(0 0 8px #a4caff); }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; } }
+</style>
+</head>
+<body>
+<div class="sky" aria-hidden="true" id="sky">
+  <span class="shooting" style="top:17%;right:12%;animation-delay:1s"></span>
+  <span class="shooting" style="top:37%;right:75%;animation-delay:4s"></span>
+</div>
+<main>
+  <div class="moon" aria-hidden="true"></div>
+  <div class="eyebrow">✦ یه پیام کوچولو از ته قلب ✦</div>
+  <h1>روزت مبارک<br><span class="glow">خوشگل‌ترین و مهربون‌ترین</span><br>دختر دنیا 💙</h1>
+  <div class="divider"><span class="sparkle">✧</span> ✦ <span class="sparkle">✧</span></div>
+  <p class="tiny">امیدوارم دنیات همیشه پر از نور،<br>لبخندای قشنگ و اتفاقای جادویی باشه 🌙</p>
+  <div class="hearts" aria-hidden="true">♡ ✧ ⭐ ✧ ♡</div>
+</main>
+<script>
+  const sky = document.getElementById('sky');
+  const symbols = ['✦','✧','⋆','·','✶','♡'];
+  for (let i = 0; i < 62; i++) {
+    const star = document.createElement('span');
+    star.className = 'star';
+    star.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+    star.style.left = Math.random() * 100 + '%';
+    star.style.top = Math.random() * 100 + '%';
+    star.style.fontSize = (8 + Math.random() * 17) + 'px';
+    star.style.setProperty('--duration', (1.7 + Math.random() * 3.6) + 's');
+    star.style.animationDelay = (-Math.random() * 5) + 's';
+    sky.appendChild(star);
+  }
+</script>
+</body>
+</html>
